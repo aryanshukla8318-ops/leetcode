@@ -1,0 +1,20 @@
+int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
+    bool* arr = calloc(sizeof(bool), 1001);
+
+    for (int i = 0; i < nums1Size; i++) {
+        arr[nums1[i]] = 1;
+    }
+
+    int* result = malloc(sizeof(int) * (nums1Size < nums2Size ? nums1Size : nums2Size) + 1);
+    int x = 0;
+    for (int i = 0; i < nums2Size; i++) {
+        if (arr[nums2[i]] == 1) {
+            result[x++] = nums2[i];
+            arr[nums2[i]]=0;//Prevents Duplicate
+        }
+    }
+
+    free(arr);
+    *returnSize = x;
+    return result;
+}
