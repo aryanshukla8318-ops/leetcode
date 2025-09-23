@@ -1,0 +1,21 @@
+from typing import List
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        freq = {}
+        n = len(nums)
+
+        for num in nums:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+
+            # check majority condition early
+            if freq[num] > n // 2:
+                return num
+
+# Example usage
+s = Solution()
+print(s.majorityElement([3, 2, 3]))            # Output: 3
+print(s.majorityElement([2, 2, 1, 1, 1, 2, 2]))  # Output: 2
