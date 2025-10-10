@@ -1,0 +1,11 @@
+class Solution(object):
+    def subarraySum(self, nums, k):
+        count = 0
+        prefixarr = 0
+        table = {0: 1}
+        for i in nums:
+            prefixarr += i
+            if prefixarr - k in table:
+                count += table[prefixarr - k]
+            table[prefixarr] = table.get(prefixarr, 0) + 1
+        return count
