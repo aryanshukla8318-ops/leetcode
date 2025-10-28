@@ -1,0 +1,38 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        min_sum = 0
+        current_sum = 0
+        
+        for num in nums:
+            current_sum += num
+            min_sum = min(min_sum, current_sum)
+        
+        start_value = 1 - min_sum
+        
+        return start_value
+
+
+if __name__ == "__main__":
+    solution = Solution()
+    
+    nums1 = [-3, 2, -3, 4, 2]
+    print(f"Input: {nums1}")
+    print(f"Output: {solution.minStartValue(nums1)}")
+    print()
+    
+    nums2 = [1, 2]
+    print(f"Input: {nums2}")
+    print(f"Output: {solution.minStartValue(nums2)}")
+    print()
+    
+    nums3 = [1, -2, -3]
+    print(f"Input: {nums3}")
+    print(f"Output: {solution.minStartValue(nums3)}")
+    print()
+    
+    print("Verification for Example 1 with startValue = 5:")
+    start = 5
+    running_sum = start
+    for i, num in enumerate(nums1):
+        running_sum += num
+        print(f"Step {i+1}: {running_sum - num} + {num} = {running_sum}")
